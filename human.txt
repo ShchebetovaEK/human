@@ -1,0 +1,6 @@
+{
+  "FirstName": "Simon",
+  "SecondName": "Pirko",
+  "age": 27,
+  "sex": "MALE"
+}
