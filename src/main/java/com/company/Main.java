@@ -8,47 +8,25 @@ import java.io.*;
 import static com.company.Sex.*;
 
 public class Main {
+    private static Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        private  static  final  Gson GSON  = new GsonBuilder().setPrettyPrinting().create();
+        HumanDao humanDao = new HumanDaoFile("human.txt");
 
-        public static void main(String[] args) {
+        Human human = new Human("Simon", "Pirko", 27, MALE);
+        Human human3 = new Human("Lev", "Pirko", 27, MALE);
+        Human human2 = new Human("Elena", "Shchebetova", 28, FEMALE);
 
+        humanDao.add(human);
+        humanDao.add(human);
+        humanDao.add(human2);
+        humanDao.add(human3);
+        humanDao.remove("Shchebetova");
+        humanDao.add(human2);
+        humanDao.changeByLastName("Shchebetova", human3);
+        System.out.println(humanDao.searchByLastName("Pirko"));
 
-        Human human = new Human("Simon","Pirko",27,MALE);
-       System.out.println(human);
-
-        String json = GSON.toJson(human);
-        System.out.println(json);
-
-        Human human2 = GSON.fromJson(json,Human.class);
-        System.out.println(human2.getFirstName());
-        System.out.println(human2.getSecondName());
-        System.out.println(human2.getAge());
-        System.out.println(human2.getSex());
-
-        File fileHuman = new File("human.txt");
-
-        try {
-                BufferedWriter fileWriter = new BufferedWriter(new FileWriter(fileHuman));
-                fileWriter.write(json);
-                fileWriter.close();
-        }catch (IOException ex){
-                ex.printStackTrace();
-        }
-
-
-        try {
-                FileReader reader = new FileReader("human.txt");
-                int c;
-                while((c=reader.read())!=-1){
-
-                        System.out.print((char)c);
-                }
-
-        }catch (IOException ex){
-                ex.printStackTrace();
-        }
 
     }
 }

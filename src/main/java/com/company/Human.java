@@ -1,21 +1,19 @@
 package com.company;
 
-public class Human {
+import java.io.Serializable;
+import java.util.Objects;
 
-    String FirstName;
-    String SecondName;
-    int age;
-    Sex sex;
+public class Human implements Serializable {
 
-    public Human(String firstName, String secondName, int age) {
+
+     private String FirstName;
+     private String LastName;
+     private int age;
+     private Sex sex;
+
+    public Human(String firstName, String lastName, int age, Sex sex) {
         FirstName = firstName;
-        SecondName = secondName;
-        this.age = age;
-    }
-
-    public Human(String firstName, String secondName, int age, Sex sex) {
-        FirstName = firstName;
-        SecondName = secondName;
+        LastName = lastName;
         this.age = age;
         this.sex = sex;
     }
@@ -28,12 +26,12 @@ public class Human {
         FirstName = firstName;
     }
 
-    public String getSecondName() {
-        return SecondName;
+    public String getLastName() {
+        return LastName;
     }
 
-    public void setSecondName(String secondName) {
-        SecondName = secondName;
+    public void setLastName(String lastName) {
+        LastName = lastName;
     }
 
     public int getAge() {
@@ -56,7 +54,7 @@ public class Human {
     public String toString() {
         return "Human{" +
                 "FirstName='" + FirstName + '\'' +
-                ", SecondName='" + SecondName + '\'' +
+                ", LastName='" + LastName + '\'' +
                 ", age=" + age +
                 ", sex=" + sex +
                 '}';
